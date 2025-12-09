@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Notas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .calculator {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #resultado {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Calculadora de Notas</h1>
+
+        <label for="notas">Notas (separadas por vírgula):</label>
+        <input type="text" id="notas" placeholder="Ex: 8,5,7,10">
+
+        <label for="notas-pesos">Notas com Pesos (formato nota:peso, separadas por vírgula):</label>
+        <input type="text" id="notas-pesos" placeholder="Ex: 8:2,5:3,7:1">
+
+        <button onclick="calcularMediaAritmetica()">Calcular Média Aritmética</button>
+        <button onclick="calcularMediaPonderada()">Calcular Média Ponderada</button>
+        <button onclick="encontrarMaior()">Encontrar Maior Nota</button>
+        <button onclick="encontrarMenor()">Encontrar Menor Nota</button>
+
+        <div id="resultado">Resultado aparecerá aqui</div>
+    </div>
+
+    <script>
+        // Caminho relativo para funcionar dentro do Spring Boot
+        const API_BASE = '/api/notas';
+
+        async function calcularMediaAritmetica() {
+            const notas = document.getElementById('notas').value.split(',').map(Number);
+            const res = await fetch(`${API_BASE}/media-aritmetica`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(notas)
+            });
+            const data = await res.json();
+            document.getElementById('resultado').innerText = `Média Aritmética: ${data}`;
+        }
+
+        async function calcularMediaPonderada() {
+            const entradas = document.getElementById('notas-pesos').value.split(',');
+            const notasPesos = entradas.map(e => {
+                const [nota, peso] = e.split(':').map(Number);
+                return { nota, peso };
+            });
+
+            const res = await fetch(`${API_BASE}/media-ponderada`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(notasPesos)
+            });
+            const data = await res.json();
+            document.getElementById('resultado').innerText = `Média Ponderada: ${data}`;
+        }
+
+        async function encontrarMaior() {
+            const notas = document.getElementById('notas').value.split(',').map(Number);
+            const res = await fetch(`${API_BASE}/maior`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(notas)
+            });
+            const data = await res.json();
+            document.getElementById('resultado').innerText = `Maior Nota: ${data}`;
+        }
+
+        async function encontrarMenor() {
+            const notas = document.getElementById('notas').value.split(',').map(Number);
+            const res = await fetch(`${API_BASE}/menor`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(notas)
+            });
+            const data = await res.json();
+            document.getElementById('resultado').innerText = `Menor Nota: ${data}`;
+        }
+    </script>
+</body>
+</html>

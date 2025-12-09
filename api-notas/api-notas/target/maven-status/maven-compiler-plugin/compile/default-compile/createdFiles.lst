@@ -1,0 +1,6 @@
+com\escola\api_notas\HelloController.class
+com\escola\api_notas\ApiNotasApplication.class
+com\escola\api_notas\NotaPonderadaDTO.class
+com\escola\api_notas\CalculadoraNotasService.class
+com\escola\api_notas\NotasController.class
+com\escola\api_notas\TestaCalculos.class
