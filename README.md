@@ -7,8 +7,8 @@ Permite operações de **CRUD** de forma simples, utilizando endpoints HTTP.
 ---
 
 ## 👥 Alunos
-- Miguel Santos
-- Diego Chagas
+- Miguel Santos - Matrícula: 202310207760
+- Diego Chagas - Matrícula: 202420800097
 
 ---
 
