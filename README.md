@@ -6,7 +6,7 @@ Permite operações de **CRUD** de forma simples, utilizando endpoints HTTP.
 
 ---
 
-## 👥 Autores / Alunos
+## 👥 Alunos
 - Miguel Santos
 - Diego Chagas
 
