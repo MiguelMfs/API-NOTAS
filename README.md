@@ -20,6 +20,9 @@ Permite operações de **CRUD** de forma simples, utilizando endpoints HTTP.
 
 ---
 
+## 📽️ Link do vídeo de apresentação:
+- https://youtu.be/9wQ0Cv9YYK0?feature=shared
+
 ## 📁 Estrutura de Pastas
 
 ```text
@@ -40,3 +43,4 @@ api-notas/
 │   │       └── application.properties  # Configurações da aplicação
 ├── pom.xml                    # Configuração do Maven
 └── README.md                  # Documentação do projeto
+
