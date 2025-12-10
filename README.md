@@ -16,7 +16,7 @@ Permite operações de **CRUD** de forma simples, utilizando endpoints HTTP.
 - **Java** — Linguagem principal de implementação.
 - **Spring Boot** — Framework para desenvolvimento de APIs REST.
 - **Maven** — Gerenciador de dependências e build do projeto.
-- **H2** ou **MySQL** — Banco de dados (conforme configuração do projeto).
+- **JMeter** - Teste de carga
 
 ---
 
